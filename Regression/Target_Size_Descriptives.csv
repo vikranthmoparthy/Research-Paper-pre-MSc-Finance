@@ -1,0 +1,12 @@
+,All Deals,Small Targets,Large Targets
+Number of Events,1446,723,723
+Sample Mean,0.003069,0.001639,0.004500
+Sample Standard deviation,0.094706,0.052692,0.123169
+T-statistic,1.2324,0.8365,0.9823
+P-value (2 sided),2.1800e-01,4.0317e-01,3.2629e-01
+Sample skewness,4.3265,-0.2591,3.9296
+Sample kurtosis,70.6161,10.9242,48.8865
+JB test statistic,279970.0630,1899.7108,65291.0204
+JB p-value,0.0000e+00,0.0000e+00,0.0000e+00
+Sign test p-value,4.7770e-01,2.3399e-01,2.5585e-02
+Rank test p-value,9.6703e-01,2.0349e-01,4.3339e-01
