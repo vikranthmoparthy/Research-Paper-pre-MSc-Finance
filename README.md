@@ -1,5 +1,6 @@
 # Repository Map
 
+```
 .
 ├── Main_Pipeline/
 │   ├── extract_acquiror_target_ticker.py   # Extracts unique tickers from Zephyr for WRDS queries
@@ -19,6 +20,7 @@
     ├── abret55graph.py                     # Plots Average Abnormal Returns (AAR) for window [-5, +5]
     ├── abret55.csv                         # Daily abnormal return data from WRDS
     └── CAR55_Event_Study_Plot.png          # High-resolution AAR visualization
+```
 
 ---
 
@@ -84,3 +86,6 @@ Daily abnormal return data used for plotting and robustness analysis.
 
 CAR55_Event_Study_Plot.png  
 Final high-resolution event study visualization.
+```
+
+---
