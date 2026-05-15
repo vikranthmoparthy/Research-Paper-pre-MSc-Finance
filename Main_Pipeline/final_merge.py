@@ -32,8 +32,6 @@ clean_controls['Target country code'] = clean_controls['Target country code'].fi
 is_cross_border = (clean_controls['Acquiror country code'] != clean_controls['Target country code'])
 cb_count = is_cross_border.sum()
 clean_controls = clean_controls[~is_cross_border].copy()
-print(f"Removed {cb_count} deals involving foreign incorporation to ensure a pure domestic sample.")
-
 
 #Create the remaining control variables
 crsp_target_df = crsp_target_df.dropna(subset=['Ticker'])
