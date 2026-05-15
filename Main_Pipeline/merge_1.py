@@ -78,6 +78,5 @@ final_dataset = merged_data[[
     'Deal value th USD', 'DlyCap', 'Relative_Size'
 ]]
 
-# Save your final master file
+# Save final master file
 final_dataset.to_csv('Master_Relative_Size_Data.csv', index=False)
-print("Script 1 complete: Confounding events iteratively filtered. Master_Relative_Size_Data.csv saved.")
