@@ -9,7 +9,7 @@ INPUTS:
 abret55.csv
 
 OUTPUTS:
-CAR55_Event_Study_Plot.png
+AAR55_Event_Study_Plot.png
 """
 
 import pandas as pd
