@@ -1,3 +1,17 @@
+"""
+SCRIPT NAME: regression2.py
+
+DESCRIPTION: 
+This script executes regression using the [-20, +5] event window dataset.
+It drops missing values, applies HC3 robust standard errors, and prints the output.
+
+INPUTS:
+Master_Regression_Dataset_205.csv
+
+OUTPUTS:
+OLS regression output
+"""
+
 import pandas as pd
 import statsmodels.formula.api as smf
 
@@ -10,7 +24,7 @@ vars_to_use = ['car', 'Relative_Size', 'Percent_Stock', 'Public_Target', 'Same_I
 #Clean any remaining missing values
 df_clean = df.dropna(subset=vars_to_use)
 
-#Run the Multiple Regression with robust standard errors (HC3)
+#Run the Multiple Regression with HC3
 model_robust = smf.ols('car ~ Relative_Size + Percent_Stock + Public_Target + Same_Industry + Log_Acq_Size', data=df_clean).fit(cov_type='HC3')
 
 #Print the Output

@@ -1,8 +1,22 @@
+"""
+SCRIPT NAME: regression3.py
+
+DESCRIPTION: 
+This script runs the OLS regression using the Day -50 market capitalization adjusted dataset.
+It cleans missing entries, applies HC3 robust standard errors, and prints the final model summary.
+
+INPUTS:
+Master_Regression_Dataset_v2.csv
+
+OUTPUTS:
+OLS regression summary
+"""
+
 import pandas as pd
 import statsmodels.formula.api as smf
 
 #Load the Master Dataset
-df = pd.read_csv('Master_Regression_Dataset.csv')
+df = pd.read_csv('Master_Regression_Dataset_v2.csv')
 
 #Define the variables needed for the regression
 vars_to_use = ['car', 'Relative_Size', 'Percent_Stock', 'Public_Target', 'Same_Industry', 'Log_Acq_Size']

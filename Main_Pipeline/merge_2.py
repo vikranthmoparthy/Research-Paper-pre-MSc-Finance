@@ -1,3 +1,18 @@
+"""
+SCRIPT NAME: merge2.py
+
+DESCRIPTION: 
+This script aligns the relative size data with CAR from WRDS using a forward chronological merge with a four-day tolerance window.
+It ensures each transaction's announcement date is correctly mapped to its corresponding stock market performance window.
+
+INPUTS:
+Master_Relative_Size_Data.csv
+wrds_car_data.csv
+
+OUTPUTS:
+Final_Event_Study_Merged.csv
+"""
+
 import pandas as pd
 
 #Load the CAR data and relative_size .csv
@@ -36,5 +51,4 @@ if 'ticker' in final_df.columns:
 #Save your combined dataset
 final_df.to_csv('Final_Event_Study_Merged.csv', index=False)
 
-print("Merge completed successfully!")
 print(final_df[['Acquiror ticker symbol', 'Announced date', 'evtdate', 'car']].head(10))

@@ -1,11 +1,26 @@
+"""
+SCRIPT NAME: merge1_v2.py
+
+DESCRIPTION: 
+This script filters raw Zephyr deal data to isolate 100% takeovers and removes deals from the same acquiror occurring within a one-year window.
+It then matches these deals with CRSP acquirer data shifted backward by 50 trading days to extract market capitalization data.
+
+INPUTS:
+UPDATE_2_Export 08_05_2026 09_45.csv
+csrp_acquiror_data.csv
+
+OUTPUTS:
+Master_Relative_Size_Data_v2.csv
+"""
+
 import pandas as pd
 
 zephyr = pd.read_csv('UPDATE_2_Export 08_05_2026 09_45.csv')
 
-#Convert the 'Acquired stake' column to numeric, forcing text to NaN
+#Convert the "Acquired stake" column to numeric, forcing text to NaN
 zephyr['Acquired stake (%)'] = pd.to_numeric(zephyr['Acquired stake (%)'], errors='coerce')
 
-#Filter to keep ONLY pure takeovers
+#Filter to keep only pure takeovers
 zephyr = zephyr[zephyr['Acquired stake (%)'] == 100.0]
 
 #Clean Zephyr Data
@@ -23,13 +38,13 @@ def filter_confounding_deals(group):
     for _, row in group.iterrows():
         current_date = row['Announced date']
         if pd.isna(last_kept_date):
-            # Always keep the firm's very first deal
+            #Always keep the firm's very first deal
             kept_rows.append(True)
             last_kept_date = current_date
         else:
             days_diff = (current_date - last_kept_date).days
             if days_diff > 365:
-                #It has been more than a year since the LAST KEPT deal, so keep
+                #It has been more than a year since the last kept deal, so keep
                 kept_rows.append(True)
                 last_kept_date = current_date
             else:
@@ -51,7 +66,7 @@ crsp['DlyCalDt'] = pd.to_datetime(crsp['DlyCalDt'])
 zephyr['Acquiror ticker symbol'] = zephyr['Acquiror ticker symbol'].astype(str).str.strip().str.upper()
 crsp['Ticker'] = crsp['Ticker'].astype(str).str.strip().str.upper()
 
-# Sort CRSP strictly by ticker and date so time flows forward
+#Sort CRSP strictly by ticker and date so time flows forward
 crsp = crsp.sort_values(by=['Ticker', 'DlyCalDt'])
 
 #Shift the Market Cap back by 50 trading days for each ticker
@@ -84,5 +99,5 @@ final_dataset = merged_data[[
     'Deal value th USD', 'DlyCap_Minus_50', 'Relative_Size'
 ]]
 
-# Save final master file
-final_dataset.to_csv('Master_Relative_Size_Data.csv', index=False)
+#Save final master file
+final_dataset.to_csv('Master_Relative_Size_Data_v2.csv', index=False)

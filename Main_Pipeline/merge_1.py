@@ -1,3 +1,18 @@
+"""
+SCRIPT NAME: merge1.py
+
+DESCRIPTION: 
+This script filters raw Zephyr deal data to isolate pure 100% takeovers and removes transactions occurring within one year of each other.
+It then merges the filtered deals with CRSP acquirer data from the closest preceding trading day to calculate the relative size of each transaction.
+
+INPUTS:
+UPDATE_2_Export 08_05_2026 09_45.csv
+csrp_acquiror_data.csv
+
+OUTPUTS:
+Master_Relative_Size_Data.csv
+"""
+
 import pandas as pd
 
 zephyr = pd.read_csv('UPDATE_2_Export 08_05_2026 09_45.csv')

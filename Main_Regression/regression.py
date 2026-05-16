@@ -1,3 +1,17 @@
+"""
+SCRIPT NAME: regression.py
+
+DESCRIPTION:
+This script runs a the robust linear OLS regression for the main event window
+It applies HC3 robust standard errors to account for heteroskedasticity.
+
+INPUTS:
+Master_Regression_Dataset.csv
+
+OUTPUTS:
+OLS Regression Summary
+"""
+
 import pandas as pd
 import statsmodels.formula.api as smf
 

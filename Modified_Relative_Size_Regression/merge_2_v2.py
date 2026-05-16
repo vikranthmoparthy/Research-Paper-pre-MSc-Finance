@@ -1,10 +1,25 @@
+"""
+SCRIPT NAME: merge2_v2.py
+
+DESCRIPTION: 
+This script aligns the adjusted Day -50 relative size data with CAR data using a forward chronological merge with a four-day tolerance.
+It bridges calendar gaps to ensure weekend / holiday announcement dates map cleanly to the next available trading day's market returns.
+
+INPUTS:
+Master_Relative_Size_Data_v2.csv
+wrds_car_data.csv
+
+OUTPUTS:
+Final_Event_Study_Merged_v2.csv
+"""
+
 import pandas as pd
 
 #Load the CAR data and relative_size .csv
-df_original = pd.read_csv('Master_Relative_Size_Data.csv')
+df_original = pd.read_csv('Master_Relative_Size_Data_v2.csv')
 df_wrds = pd.read_csv('wrds_car_data.csv')
 
-#Clean the Ticker columns so they match perfectly
+#Clean the ticker columns so they match perfectly
 df_original['Acquiror ticker symbol'] = df_original['Acquiror ticker symbol'].astype(str).str.strip().str.upper()
 df_wrds['ticker'] = df_wrds['ticker'].astype(str).str.strip().str.upper()
 
@@ -29,12 +44,11 @@ final_df = pd.merge_asof(
     tolerance=pd.Timedelta(days=4)     
 )
 
-#dDop the redundant 'ticker' column from WRDS to keep it clean
+#Drop the redundant ticker column from WRDS to keep it clean
 if 'ticker' in final_df.columns:
     final_df = final_df.drop(columns=['ticker'])
 
-#Save your combined dataset
-final_df.to_csv('Final_Event_Study_Merged.csv', index=False)
+#Save the combined dataset
+final_df.to_csv('Final_Event_Study_Merged_v2.csv', index=False)
 
-print("Merge completed successfully!")
 print(final_df[['Acquiror ticker symbol', 'Announced date', 'evtdate', 'car']].head(10))

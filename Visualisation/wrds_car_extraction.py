@@ -1,3 +1,17 @@
+"""
+SCRIPT NAME: wrds_car_extraction.py
+
+DESCRIPTION: 
+This script extracts unique acquirer ticker symbols and announcement dates from the final master regression dataset.
+It reformats the dates to YYYYMMDD, renames the columns, removes duplicates and generates a input .txt file for WRDS
+
+INPUTS:
+Master_Regression_Dataset.csv
+
+OUTPUTS:
+WRDS_Robustness_Input.txt
+"""
+
 import pandas as pd
 
 #Load final master regression dataset

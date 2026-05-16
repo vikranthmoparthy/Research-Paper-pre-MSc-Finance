@@ -1,8 +1,25 @@
+"""
+SCRIPT NAME: final_merge_v2.py
+
+DESCRIPTION: 
+This script fixes Zephyr's multi-row layout by combining separate payment rows and filters the data to keep only domestic US deals.
+It calculates the stock payment percentage, identifies public targets, matches industry codes, and applies a log transformation to the Day -50 market capitalization
+data to build the final dataset for the regression.
+
+INPUTS:
+Final_Event_Study_Merged_v2.csv
+UPDATE_2_Export 08_05_2026 09_45.csv
+csrp_target_data.csv
+
+OUTPUTS:
+Master_Regression_Dataset_v2.csv
+"""
+
 import pandas as pd
 import numpy as np
 
 #Load the datasets
-event_study_df = pd.read_csv('Final_Event_Study_Merged.csv')
+event_study_df = pd.read_csv('Final_Event_Study_Merged_v2.csv')
 controls_df = pd.read_csv('UPDATE_2_Export 08_05_2026 09_45.csv')
 crsp_target_df = pd.read_csv('csrp_target_data.csv')
 
@@ -85,4 +102,4 @@ final_regression_dataset = final_regression_dataset.dropna(subset=['car'])
 dropped_car = initial_len - len(final_regression_dataset)
 
 #Export Final Dataset
-final_regression_dataset.to_csv('Master_Regression_Dataset.csv', index=False)
+final_regression_dataset.to_csv('Master_Regression_Dataset_v2.csv', index=False)

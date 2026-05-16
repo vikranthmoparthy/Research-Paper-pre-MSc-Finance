@@ -1,3 +1,17 @@
+"""
+SCRIPT NAME: wrds_ticker_for_CAR_extraction.py
+
+DESCRIPTION: 
+This script extracts unique acquirer tickers and announcement dates from Master_Relative_Size_Data.csv
+It formats the dates to YYYYMMDD and saves the output as a text file formatted for the WRDS Event Study tool.
+
+INPUTS:
+Master_Relative_Size_Data.csv
+
+OUTPUTS:
+WRDS_Robustness_Input.txt
+"""
+
 import pandas as pd
 
 df = pd.read_csv('Master_Relative_Size_Data.csv')
