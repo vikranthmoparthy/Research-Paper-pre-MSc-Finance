@@ -28,7 +28,7 @@ Research_Pipeline
 │   ├── regression.py
 │   └── update_descriptive_statistics.py
 │
-├── Modified_Event_Window_Regression
+├── Modified Event Window Regression [-20, +5]
 │   ├── CAR205.csv
 │   ├── CAR205_merge.py
 │   ├── Master_Regression_Dataset.csv
@@ -37,7 +37,7 @@ Research_Pipeline
 │   ├── acquiror_ticker_extractor.py
 │   └── regression2.py
 │
-├── Modified_Relative_Size_Regression
+├── Modified Relative Size Regression (Market Cap -50)
 │   ├── Final_Event_Study_Merged_v2.csv
 │   ├── Master_Regression_Dataset_v2.csv
 │   ├── Master_Relative_Size_Data_v2.csv
