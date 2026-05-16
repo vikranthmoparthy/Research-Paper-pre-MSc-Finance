@@ -80,8 +80,8 @@ results = {
     "Large Targets": get_comprehensive_stats(large_df)
 }
 
-#Convert to DataFrame for a clean view
+#Convert to DataFrame
 results_df = pd.DataFrame(results)
 
-#Save to a CSV so you can easily copy/paste into Excel or Word
+#Save to a CSV
 results_df.to_csv('Target_Size_Descriptives.csv')

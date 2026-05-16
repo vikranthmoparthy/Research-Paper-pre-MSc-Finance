@@ -30,7 +30,7 @@ zephyr['Announced date'] = pd.to_datetime(zephyr['Announced date'], format='mixe
 
 #If two or more deals of the same firm occur within a year from each other, keep only the first of the deals, and drop the rest
 def filter_confounding_deals(group):
-    # Sort chronologically to ensure we step through time correctly
+    #Sort chronologically to ensure we step through time correctly
     group = group.sort_values('Announced date')
     kept_rows = []
     last_kept_date = pd.NaT

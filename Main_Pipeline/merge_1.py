@@ -20,7 +20,7 @@ zephyr = pd.read_csv('UPDATE_2_Export 08_05_2026 09_45.csv')
 #Convert the 'Acquired stake' column to numeric, forcing text to NaN
 zephyr['Acquired stake (%)'] = pd.to_numeric(zephyr['Acquired stake (%)'], errors='coerce')
 
-#Filter to keep ONLY pure takeovers
+#Filter to keep only pure takeovers
 zephyr = zephyr[zephyr['Acquired stake (%)'] == 100.0]
 
 #Clean Zephyr Data
@@ -30,7 +30,7 @@ zephyr['Announced date'] = pd.to_datetime(zephyr['Announced date'], format='mixe
 
 #If two or more deals of the same firm occur within a year from each other, keep only the first of the deals, and drop the rest
 def filter_confounding_deals(group):
-    # Sort chronologically to ensure we step through time correctly
+    #Sort chronologically to ensure we step through time correctly
     group = group.sort_values('Announced date')
     kept_rows = []
     last_kept_date = pd.NaT
@@ -38,13 +38,13 @@ def filter_confounding_deals(group):
     for _, row in group.iterrows():
         current_date = row['Announced date']
         if pd.isna(last_kept_date):
-            # Always keep the firm's very first deal
+            #Always keep the firm's very first deal
             kept_rows.append(True)
             last_kept_date = current_date
         else:
             days_diff = (current_date - last_kept_date).days
             if days_diff > 365:
-                #It has been more than a year since the LAST KEPT deal, so keep
+                #It has been more than a year since the last kept deal, so keep
                 kept_rows.append(True)
                 last_kept_date = current_date
             else:
@@ -58,7 +58,7 @@ zephyr = zephyr.groupby('Acquiror ticker symbol', group_keys=False)[zephyr.colum
 #Subtract 1 day from the announcement date to ensure we use clean market caps
 zephyr['Mkt_Cap_Date'] = zephyr['Announced date'] - pd.Timedelta(days=1)
 
-#Loading CRSP Market Cap Data
+#Load CRSP Market Cap Data
 crsp = pd.read_csv('csrp_acquiror_data.csv')
 crsp['DlyCalDt'] = pd.to_datetime(crsp['DlyCalDt'])
 

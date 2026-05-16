@@ -62,11 +62,11 @@ clean_controls['Announced date'] = pd.to_datetime(clean_controls['Announced date
 #Clean Zephyr Tickers and safely create match keys
 clean_controls['Target ticker symbol'] = clean_controls['Target ticker symbol'].astype(str).str.strip().str.upper()
 
-#Replace string artifacts 'NAN' from astype cast with actual missing values
+#Replace string 'NAN' from astype cast with actual missing values
 clean_controls['Target ticker symbol'] = clean_controls['Target ticker symbol'].replace({'NAN': np.nan, 'NONE': np.nan, '': np.nan})
 
 def check_public_target(row):
-    # If there is no ticker, it's not a public target
+    #If there is no ticker, it's not a public target
     if pd.isna(row['Target ticker symbol']):
         return 0
     key = str(row['Target ticker symbol']) + "_" + row['Announced date'].strftime('%Y-%m-%d')
@@ -78,7 +78,7 @@ clean_controls['Public_Target'] = clean_controls.apply(check_public_target, axis
 clean_controls['Acq_NAICS_2'] = clean_controls['Acquiror primary NAICS 2017 code'].astype(str).str.strip().str.lower().str[:2]
 clean_controls['Tar_NAICS_2'] = clean_controls['Target primary NAICS 2017 code'].astype(str).str.strip().str.lower().str[:2]
 
-# Ensure they match AND are not the result of a 'nan' or 'na' string
+#Ensure they match and are not the result of a 'nan' or 'na' string
 clean_controls['Same_Industry'] = (
     (clean_controls['Acq_NAICS_2'] == clean_controls['Tar_NAICS_2']) & 
     (~clean_controls['Acq_NAICS_2'].isin(['na', 'no', '']))

@@ -24,7 +24,7 @@ vars_to_use = ['car', 'Relative_Size', 'Percent_Stock', 'Public_Target', 'Same_I
 #Clean any remaining missing values
 df_clean = df.dropna(subset=vars_to_use)
 
-#Run the Multiple Regression with HC3
+#Run the regression
 model_robust = smf.ols('car ~ Relative_Size + Percent_Stock + Public_Target + Same_Industry + Log_Acq_Size', data=df_clean).fit(cov_type='HC3')
 
 #Print the Output

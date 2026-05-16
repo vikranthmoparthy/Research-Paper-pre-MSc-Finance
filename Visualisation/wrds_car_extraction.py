@@ -29,5 +29,5 @@ extract.columns = ['TICKER', 'EVENT_DATE']
 #Drop any potential duplicates to avoid running the same deal twice
 extract = extract.drop_duplicates()
 
-#Save the output to a new .txt file ready for WRDS upload
+#Save the output to a new .txt file for WRDS upload
 extract.to_csv('WRDS_Robustness_Input.txt', sep='\t', index=False)

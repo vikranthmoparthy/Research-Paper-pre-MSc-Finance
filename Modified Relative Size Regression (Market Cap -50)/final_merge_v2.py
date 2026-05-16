@@ -54,7 +54,7 @@ clean_controls = clean_controls[~is_cross_border].copy()
 crsp_target_df = crsp_target_df.dropna(subset=['Ticker'])
 crsp_target_df['DlyCalDt'] = pd.to_datetime(crsp_target_df['DlyCalDt'].astype(str), format='%Y-%m-%d')
 
-# Clean CRSP Tickers
+#Clean CRSP Tickers
 crsp_target_df['Match_Key'] = crsp_target_df['Ticker'].astype(str).str.strip().str.upper() + "_" + crsp_target_df['DlyCalDt'].dt.strftime('%Y-%m-%d')
 valid_public_keys = set(crsp_target_df['Match_Key'].unique())
 
@@ -67,7 +67,7 @@ clean_controls['Target ticker symbol'] = clean_controls['Target ticker symbol'].
 clean_controls['Target ticker symbol'] = clean_controls['Target ticker symbol'].replace({'NAN': np.nan, 'NONE': np.nan, '': np.nan})
 
 def check_public_target(row):
-    # If there is no ticker, it's not a public target
+    #If there is no ticker, it's not a public target
     if pd.isna(row['Target ticker symbol']):
         return 0
     key = str(row['Target ticker symbol']) + "_" + row['Announced date'].strftime('%Y-%m-%d')

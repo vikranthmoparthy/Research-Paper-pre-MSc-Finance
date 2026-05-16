@@ -35,7 +35,7 @@ plot_data = df.groupby('evttime')['abret'].mean().reset_index()
 #Generate plot
 plt.figure(figsize=(10, 6))
 
-#Plot the main AAR line (black, sharp)
+#Plot the main AAR line
 plt.plot(plot_data['evttime'], plot_data['abret'], color='black', linewidth=1.5)
 
 #Format the X-axis to explicitly show every single day from -5 to +5
