@@ -112,7 +112,7 @@ To run the analysis, execute the Python scripts in the following order within th
 
 | File | Description |
 |---|---|
-| `regression.py` | Runs the robust linear OLS regression for the main event window, applying HC3 robust standard errors to account for heteroskedasticity. |
+| `regression.py` | Runs the robust linear OLS regression for the main event window|
 | `update_descriptive_statistics.py` | Separates the master dataset into small and large subsamples based on median relative deal size. Calculates statistics and runs parametric/non-parametric significance tests. |
 | `Master_Regression_Dataset.csv` | A copy of the final dataset used to run the main statistical model. |
 | `Target_Size_Descriptives.csv` | A table summarizing descriptive statistics of the deals, split by large or small target company.|
@@ -123,7 +123,7 @@ To run the analysis, execute the Python scripts in the following order within th
 |---|---|
 | `acquiror_ticker_extractor.py` | Extracts and cleans acquirer tickers and announcement dates from the final master dataset. Renames columns and formats dates to YYYYMMDD for WRDS. |
 | `CAR205_merge.py` | Drops existing return variables from the master dataset and replaces them with CAR calculated over the [-20, +5] window using an inner join on ticker and date. |
-| `regression2.py` | Executes regression using the [-20, +5] window dataset. Drops missing values, applies HC3 robust standard errors, and prints output. |
+| `regression2.py` | Executes regression using the [-20, +5] window dataset. Drops missing values and prints output. |
 | `CAR205.csv` | Dataset of stock returns calculated in window [-20, +5]|
 | `Master_Regression_Dataset_205.csv` | Version of the final dataset replacing the [-1, +1] returns with [-20, +5] returns |
 | `WRDS_Event_Study_Input_205.txt` | Text file to request WRDS for the [-20, +5] window returns. |
@@ -135,7 +135,7 @@ To run the analysis, execute the Python scripts in the following order within th
 | `merge_1_v2.py` | Filters Zephyr data for 100% takeovers, removes deals within a one-year window, and matches with CRSP data shifted backward by 50 days to extract market capitalization. |
 | `merge_2_v2.py` | Aligns Day -50 relative size data with CAR data using a forward chronological merge (four-day tolerance) to bridge calendar gaps cleanly. |
 | `final_merge_v2.py` | Fixes Zephyr layout issues, filters for US deals, calculates stock percentages, matches industry codes, and applies a log transformation to the Day -50 market cap data. |
-| `regression3.py` | Runs OLS regression using the Day -50 adjusted dataset. Cleans entries, applies HC3 errors, and prints the summary. |
+| `regression3.py` | Runs OLS regression using the Day -50 adjusted dataset. Cleans entries and prints the summary. |
 | `UPDATE_2_Export 08_05_2026 09_45.csv` | Copy of the raw export data from Zephyr |
 | `wrds_car_data.csv` | Copy of the standard CAR spreadsheet from WRDS. |
 | `Master_Relative_Size_Data_v2.csv` | Intermediate dataset calculating deal sizes using stock prices from 50 days before announcement.|
