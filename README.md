@@ -152,3 +152,14 @@ To run the analysis, execute the Python scripts in the following order within th
 | `Master_Regression_Dataset.csv` | A copy of the main finalized dataset|
 | `WRDS_Robustness_Input.txt` | A text file used to request the daily abnormal returns for the [-5, +5] window from WRDS. |
 | `abret55.csv` | A dataset containing the daily abnormal stock returns in the [-5, +5] window|
+
+## 4. Git Ignored Files
+
+The following raw data files are excluded via `.gitignore` due to their size.
+
+| File Path | Description |
+|---|---|
+| `Main_Pipeline/csrp_acquiror_data.csv` | Raw CRSP market data for acquirers |
+| `Main_Pipeline/csrp_target_data.csv` | Raw CRSP market data for targets |
+| `Modified Relative Size Regression (Market Cap -50)/csrp_acquiror_data.csv` | Copy of the Raw CRSP market data for acquirers |
+| `Modified Relative Size Regression (Market Cap -50)/csrp_target_data.csv` | Copy of the Raw CRSP market data for targets |
