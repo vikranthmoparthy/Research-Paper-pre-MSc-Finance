@@ -3,7 +3,6 @@ SCRIPT NAME: regression3.py
 
 DESCRIPTION: 
 This script runs the OLS regression using the Day -50 market capitalization adjusted dataset.
-It cleans missing entries, applies HC3 robust standard errors, and prints the final model summary.
 
 INPUTS:
 Master_Regression_Dataset_v2.csv

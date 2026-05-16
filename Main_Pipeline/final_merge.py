@@ -2,8 +2,8 @@
 SCRIPT NAME: final_merge.py
 
 DESCRIPTION:
-This script fixes Zephyr's multi-row layout by combining separate payment rows and filters the data to keep only domestic US deals.
-It then calculates the stock payment percentage, identifies public targets, matches industry codes, and builds the final dataset for regression.
+Combines payment rows and keeps only domestic US deals.
+Calculates stock payment percentage, identifies public targets, matches industry codes, and builds the final dataset.
 
 INPUTS:
 Final_Event_Study_Merged.csv

@@ -95,8 +95,8 @@ To run the analysis, execute the Python scripts in the following order within th
 |---|---|
 | `extract_acquiror_target_ticker.py` | Extracts unique acquirer and target ticker symbols from the Zephyr deal export. Removes empty entries, cleans whitespace, sorts alphabetically, and saves to text files for WRDS. |
 | `merge_1.py` | Filters raw Zephyr data to isolate pure 100% takeovers and removes transactions within one year of each other. Merges with CRSP acquirer data to calculate relative sizes. |
-| `merge_2.py` | Aligns relative size data with WRDS CAR using a forward chronological merge (four-day tolerance). Maps announcement dates to corresponding stock market performance windows. |
-| `final_merge.py` | Fixes Zephyr's multi-row layout by combining payment rows and keeps only domestic US deals. Calculates stock payment percentage, identifies public targets, matches industry codes, and builds the final dataset. |
+| `merge_2.py` | Aligns relative size data with WRDS CAR using a forward chronological merge|
+| `final_merge.py` | Combines payment rows and keeps only domestic US deals. Calculates stock payment percentage, identifies public targets, matches industry codes, and builds the final dataset. |
 | `wrds_ticker_for_CAR_extraction.py` | Extracts unique acquirer tickers and announcement dates from the relative size data, formats dates to YYYYMMDD, and saves an input file for the WRDS Event Study tool. |
 | `.DS_Store` | N/A |
 | `UPDATE_2_Export 08_05_2026 09_45.csv` | Raw export data from Zephyr containing the initial list of M&A deals. |
@@ -106,15 +106,15 @@ To run the analysis, execute the Python scripts in the following order within th
 | `Master_Regression_Dataset.csv` | Final dataset containing all variables needed to run the main regression|
 | `WRDS_Acquiror_Tickers.txt` | Clean list of acquirers' stock tickers, which were uploaded to WRDS.|
 | `WRDS_Target_Tickers.txt` | Clean list of targets' stock tickers, which were uploaded to WRDS. |
-| `WRDS_Robustness_Input.txt` | Text file linking acquirer tickers with specific event dates to request return data from WRDS. |
+| `WRDS_Robustness_Input.txt` | Text file linking acquirer tickers with event dates to request return data from WRDS. |
 
 ### Main Regression
 
 | File | Description |
 |---|---|
-| `regression.py` | Runs the robust linear OLS regression for the main event window|
-| `update_descriptive_statistics.py` | Separates the master dataset into small and large subsamples based on median relative deal size. Calculates statistics and runs parametric/non-parametric significance tests. |
-| `Master_Regression_Dataset.csv` | A copy of the final dataset used to run the main statistical model. |
+| `regression.py` | Runs the robust linear regression for the main event window|
+| `update_descriptive_statistics.py` | Separates the master dataset into small and large samples based on median relative deal size. Then, calculates descriptive statistics for each group. |
+| `Master_Regression_Dataset.csv` | A copy of the final dataset for the regression |
 | `Target_Size_Descriptives.csv` | A table summarizing descriptive statistics of the deals, split by large or small target company.|
 
 ### Modified Event Window Regression [-20, +5]
@@ -122,8 +122,8 @@ To run the analysis, execute the Python scripts in the following order within th
 | File | Description |
 |---|---|
 | `acquiror_ticker_extractor.py` | Extracts and cleans acquirer tickers and announcement dates from the final master dataset. Renames columns and formats dates to YYYYMMDD for WRDS. |
-| `CAR205_merge.py` | Drops existing return variables from the master dataset and replaces them with CAR calculated over the [-20, +5] window using an inner join on ticker and date. |
-| `regression2.py` | Executes regression using the [-20, +5] window dataset. Drops missing values and prints output. |
+| `CAR205_merge.py` | Drops existing return variables from the master dataset and replaces them with CAR calculated over the [-20, +5] window|
+| `regression2.py` | Runs regression on the [-20, +5] window dataset. |
 | `CAR205.csv` | Dataset of stock returns calculated in window [-20, +5]|
 | `Master_Regression_Dataset_205.csv` | Version of the final dataset replacing the [-1, +1] returns with [-20, +5] returns |
 | `WRDS_Event_Study_Input_205.txt` | Text file to request WRDS for the [-20, +5] window returns. |
@@ -132,12 +132,12 @@ To run the analysis, execute the Python scripts in the following order within th
 
 | File | Description |
 |---|---|
-| `merge_1_v2.py` | Filters Zephyr data for 100% takeovers, removes deals within a one-year window, and matches with CRSP data shifted backward by 50 days to extract market capitalization. |
-| `merge_2_v2.py` | Aligns Day -50 relative size data with CAR data using a forward chronological merge (four-day tolerance) to bridge calendar gaps cleanly. |
+| `merge_1_v2.py` | Filters Zephyr data for 100% takeovers, removes deals within a one-year window, and matches with CRSP data shifted backward by 50 days to extract market cap data. |
+| `merge_2_v2.py` | Aligns Day -50 relative size data with CAR data using a forward chronological merge (four-day tolerance) to bridge any calendar gaps. |
 | `final_merge_v2.py` | Fixes Zephyr layout issues, filters for US deals, calculates stock percentages, matches industry codes, and applies a log transformation to the Day -50 market cap data. |
 | `regression3.py` | Runs OLS regression using the Day -50 adjusted dataset. Cleans entries and prints the summary. |
 | `UPDATE_2_Export 08_05_2026 09_45.csv` | Copy of the raw export data from Zephyr |
-| `wrds_car_data.csv` | Copy of the standard CAR spreadsheet from WRDS. |
+| `wrds_car_data.csv` | Copy of the CAR spreadsheet from WRDS. |
 | `Master_Relative_Size_Data_v2.csv` | Intermediate dataset calculating deal sizes using stock prices from 50 days before announcement.|
 | `Final_Event_Study_Merged_v2.csv` | Combined dataset linking the Day -50 modified size data with the stock returns. |
 | `Master_Regression_Dataset_v2.csv` | Finalized dataset for the modified relative size robustness check.|

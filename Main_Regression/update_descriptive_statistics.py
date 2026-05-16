@@ -2,9 +2,7 @@
 SCRIPT NAME: update_descriptive_statistics.py
 
 DESCRIPTION:
-This script separates the master dataset into small and large target subsamples based on the median relative deal size.
-It then calculates descriptive statistics and runs both parametric and non-parametric significance tests on the CAR for each group.
-
+Separates the master dataset into small and large samples based on median relative deal size. Then, calculates descriptive statistics for each group.
 INPUTS:
 Master_Regression_Dataset.csv
 

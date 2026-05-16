@@ -3,7 +3,6 @@ SCRIPT NAME: CAR205_merge.py
 
 DESCRIPTION: 
 This script drops the existing return variables from the master dataset and replaces them with the new CAR calculated over the [-20, +5] window.
-It uses an inner join on ticker and event date to build the updated dataset.
 
 INPUTS:
 Master_Regression_Dataset.csv

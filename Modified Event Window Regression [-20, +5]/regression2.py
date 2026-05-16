@@ -2,8 +2,8 @@
 SCRIPT NAME: regression2.py
 
 DESCRIPTION: 
-This script executes regression using the [-20, +5] event window dataset.
-It drops missing values, applies HC3 robust standard errors, and prints the output.
+This script executes regression on the [-20, +5] event window dataset.
+It drops missing values and prints the output.
 
 INPUTS:
 Master_Regression_Dataset_205.csv

@@ -44,7 +44,7 @@ final_df = pd.merge_asof(
     tolerance=pd.Timedelta(days=4)     
 )
 
-#dDop the redundant 'ticker' column from WRDS to keep it clean
+#dDop the redundant ticker column from WRDS to keep it clean
 if 'ticker' in final_df.columns:
     final_df = final_df.drop(columns=['ticker'])
 
