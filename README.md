@@ -60,6 +60,13 @@ Research_Pipeline
 ---
 
 ## 2. Running Instructions
+First clone the repository locally and navigate into the folder: 
+
+```bash
+git clone https://github.com/vikranthmoparthy/Research-Paper-pre-MSc-Finance.git
+cd Research-Paper-pre-MSc-Finance
+```
+
 Before running the analysis, download the following two files from GDrive and place a copy of each file in BOTH the "Main Pipeline" and "Modified Relative Size Regression (Market Cap -50)" folders:
 
 csrp_acquiror_data.csv: https://drive.google.com/file/d/1cCAdUWZ-8Lk_cHhBiXby9r0ERvuPcIfe/view?usp=sharing
