@@ -60,6 +60,10 @@ Research_Pipeline
 ---
 
 ## 2. Running Instructions
+Before running the analysis, download the following two files from GDrive and place a copy of each file in BOTH the "Main Pipeline" and "Modified Relative Size Regression (Market Cap -50)" folders:
+
+csrp_acquiror_data.csv: https://drive.google.com/file/d/1cCAdUWZ-8Lk_cHhBiXby9r0ERvuPcIfe/view?usp=sharing
+csrp_target_data.csv: https://drive.google.com/file/d/1MPW_31XlkszybJvNku7VT2T61nKUPJEu/view?usp=sharing
 
 To run the analysis, execute the Python scripts in the following order within their respective folders:
 
@@ -152,14 +156,3 @@ To run the analysis, execute the Python scripts in the following order within th
 | `Master_Regression_Dataset.csv` | A copy of the main finalized dataset|
 | `WRDS_Robustness_Input.txt` | A text file used to request the daily abnormal returns for the [-5, +5] window from WRDS. |
 | `abret55.csv` | A dataset containing the daily abnormal stock returns in the [-5, +5] window|
-
-## 4. Git Ignored Files
-
-The following raw data files are excluded via `.gitignore` due to their size.
-
-| File Path | Description |
-|---|---|
-| `Main_Pipeline/csrp_acquiror_data.csv` | Raw CRSP market data for acquirers |
-| `Main_Pipeline/csrp_target_data.csv` | Raw CRSP market data for targets |
-| `Modified Relative Size Regression (Market Cap -50)/csrp_acquiror_data.csv` | Copy of the Raw CRSP market data for acquirers |
-| `Modified Relative Size Regression (Market Cap -50)/csrp_target_data.csv` | Copy of the Raw CRSP market data for targets |
