@@ -10,3 +10,5 @@ JB test statistic,279970.0630,1899.7108,65291.0204
 JB p-value,0.0000e+00,0.0000e+00,0.0000e+00
 Sign test p-value,4.7770e-01,2.3399e-01,2.5585e-02
 Rank test p-value,9.6703e-01,2.0349e-01,4.3339e-01
+Welch's 2-Sample T-Test (p-value),5.6602e-01,-,-
+Mann-Whitney U Test (p-value),1.0223e-01,-,-

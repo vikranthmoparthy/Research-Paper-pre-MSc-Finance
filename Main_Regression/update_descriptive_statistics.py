@@ -2,7 +2,10 @@
 SCRIPT NAME: update_descriptive_statistics.py
 
 DESCRIPTION:
-Separates the master dataset into small and large samples based on median relative deal size. Then, calculates descriptive statistics for each group.
+Separates the master dataset into small and large samples based on median relative deal size. 
+Calculates one-sample descriptive statistics for each group, and two-sample comparative tests 
+between the small and large targets.
+
 INPUTS:
 Master_Regression_Dataset.csv
 
@@ -50,7 +53,7 @@ def get_comprehensive_stats(data, column='car'):
     positive_count = (series > 0).sum()
     sign_pval = stats.binomtest(positive_count, n, p=0.5).pvalue
     
-    # Rank Test
+    #Rank Test
     #If there are exactly zero values, Wilcoxon drops them, so we handle safely.
     non_zero_series = series[series != 0]
     if len(non_zero_series) > 0:
@@ -82,6 +85,20 @@ results = {
 
 #Convert to DataFrame
 results_df = pd.DataFrame(results)
+
+#Two sample comparative tests
+small_car = small_df['car'].dropna()
+large_car = large_df['car'].dropna()
+
+#Welch's Two-Sample T-Test
+_, t_pval_2samp = stats.ttest_ind(small_car, large_car, equal_var=False)
+
+#Mann-Whitney U Test
+_, u_pval = stats.mannwhitneyu(small_car, large_car, alternative='two-sided')
+
+#Add these results as new rows at the bottom of the DataFrame
+results_df.loc["Welch's 2-Sample T-Test (p-value)"] = [f"{t_pval_2samp:.4e}", "-", "-"]
+results_df.loc["Mann-Whitney U Test (p-value)"] = [f"{u_pval:.4e}", "-", "-"]
 
 #Save to a CSV
 results_df.to_csv('Target_Size_Descriptives.csv')

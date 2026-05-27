@@ -23,9 +23,11 @@ Research_Pipeline
 │   └── wrds_ticker_for_CAR_extraction.py
 │
 ├── Main_Regression
+│   ├── breusch_pagan_test.py
 │   ├── Master_Regression_Dataset.csv
 │   ├── Target_Size_Descriptives.csv
 │   ├── regression.py
+│   ├── update_descriptive_statistics_explanatory_variables.py
 │   └── update_descriptive_statistics.py
 │
 ├── Modified Event Window Regression [-20, +5]
@@ -53,7 +55,7 @@ Research_Pipeline
     ├── Master_Regression_Dataset.csv
     ├── WRDS_Robustness_Input.txt
     ├── abret55.csv
-    ├── abret55graph.py
+    ├── abret55_small_large.py
     └── wrds_car_extraction.py
 ```
 
@@ -123,7 +125,10 @@ To run the analysis, execute the Python scripts in the following order within th
 
 | File | Description |
 |---|---|
+| `breusch_pagan_test.py` | Runs the Breusch-Pagan test for heteroskedasticity on the linear regression for the main event window.|
 | `regression.py` | Runs the robust linear regression for the main event window|
+| `update_descriptive_statistics_explanatory_variables.py` | Separates the master dataset into small and large samples based on median relative deal size. 
+Calculates relevant descriptive and distributional statistics for all explanatory variables. |
 | `update_descriptive_statistics.py` | Separates the master dataset into small and large samples based on median relative deal size. Then, calculates descriptive statistics for each group. |
 | `Master_Regression_Dataset.csv` | A copy of the final dataset for the regression |
 | `Target_Size_Descriptives.csv` | A table summarizing descriptive statistics of the deals, split by large or small target company.|
@@ -158,7 +163,7 @@ To run the analysis, execute the Python scripts in the following order within th
 | File | Description |
 |---|---|
 | `wrds_car_extraction.py` | Extracts unique acquirer tickers and announcement dates from the master regression dataset, reformats dates, removes duplicates, and generates a WRDS input file. |
-| `abret55graph.py` | Processes CAR across the [-5, +5] window to calculate the Average Abnormal Return (AAR) for each day, then generates a line graph to visualize the data. |
+| `abret55_small_large.py` | Processes CAR across a [-5,+5] event window. It computes Average Abnormal Returns (AAR) and plots overall and subsample results for small and large target deals |
 | `AAR55_Event_Study_Plot.png` | A line chart showing how AAR changed over the[ -5, +5] window|
 | `Master_Regression_Dataset.csv` | A copy of the main finalized dataset|
 | `WRDS_Robustness_Input.txt` | A text file used to request the daily abnormal returns for the [-5, +5] window from WRDS. |
