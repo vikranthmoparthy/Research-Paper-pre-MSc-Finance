@@ -129,8 +129,7 @@ To run the analysis, execute the Python scripts in the following order within th
 | `breusch_pagan_test.py` | Runs the Breusch-Pagan test for heteroskedasticity on the linear regression for the main event window.|
 | `Explanatory_Descriptives.csv` | Files containing the descriptive statistics for the explanatory variables. |
 | `regression.py` | Runs the robust linear regression for the main event window|
-| `update_descriptive_statistics_explanatory_variables.py` | Separates the master dataset into small and large samples based on median relative deal size. 
-Calculates relevant descriptive and distributional statistics for all explanatory variables. |
+| `update_descriptive_statistics_explanatory_variables.py` | Separates the master dataset into small and large samples based on median relative deal size and then alculates relevant descriptive and distributional statistics for all explanatory variables |
 | `update_descriptive_statistics.py` | Separates the master dataset into small and large samples based on median relative deal size. Then, calculates descriptive statistics for each group. |
 | `Master_Regression_Dataset.csv` | A copy of the final dataset for the regression |
 | `Target_Size_Descriptives.csv` | A table summarizing descriptive statistics of the deals, split by large or small target company.|
