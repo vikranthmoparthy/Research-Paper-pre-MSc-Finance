@@ -1,5 +1,5 @@
 """
-SCRIPT NAME: abret55_small_large.py.py
+SCRIPT NAME: abret55_small_large.py
 
 DESCRIPTION: 
 This script processes AAR across a [-5, +5] event window to calculate the Average Abnormal Return (AAR) for each relative trading day.
@@ -52,7 +52,6 @@ if 'event_date' in df.columns:
     
 #Standardize WRDS date format to match the master dataset
 df['evtdate'] = pd.to_datetime(df['evtdate'].astype(str))
-
 
 #By merging on both Ticker and Date, we guarantee the daily returns map perfectly to the specific deal that occurred on that day.
 df = df.merge(size_mapping, on=['TICKER', 'evtdate'], how='inner')

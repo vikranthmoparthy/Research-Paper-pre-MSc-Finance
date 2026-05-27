@@ -57,11 +57,11 @@ def get_applicable_stats(series):
         "JB p-value": f"{jb_pval:.4e}"
     }
 
-# Compile results for all variables
+#Compile results for all variables
 all_results = {}
 
 for var in exp_vars:
-    # Create a DataFrame for each variable comparing the three groups
+    #Create a DataFrame for each variable comparing the three groups
     var_results = {
         "All Deals": get_applicable_stats(df[var]),
         "Small Targets": get_applicable_stats(small_df[var]),
@@ -69,10 +69,8 @@ for var in exp_vars:
     }
     all_results[var] = pd.DataFrame(var_results)
 
-# Concatenate all the variable DataFrames into one large summary table
+#Concatenate all the variable DataFrames into one large summary table
 final_df = pd.concat(all_results.values(), axis=1, keys=all_results.keys())
 
-# Save to a CSV
+#Save to a CSV
 final_df.to_csv('Explanatory_Descriptives.csv')
-
-print("Success: Generated Explanatory_Descriptives.csv")

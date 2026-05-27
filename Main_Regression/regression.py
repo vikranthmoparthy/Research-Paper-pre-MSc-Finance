@@ -26,5 +26,4 @@ df_clean = df.dropna(subset=vars_to_use)
 #Run the regression
 model_robust = smf.ols('car ~ Relative_Size + Percent_Stock + Public_Target + Same_Industry + Log_Acq_Size', data=df_clean).fit(cov_type='HC3')
 
-#Print the Output
 print(model_robust.summary())
