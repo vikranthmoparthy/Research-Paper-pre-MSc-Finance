@@ -30,6 +30,7 @@ Research_Pipeline
 │   ├── regression.py
 │   ├── update_descriptive_statistics_explanatory_variables.py
 │   └── update_descriptive_statistics.py
+│   └── winsorize.py
 │
 ├── Modified Event Window Regression [-20, +5]
 │   ├── CAR205.csv
@@ -133,6 +134,7 @@ To run the analysis, execute the Python scripts in the following order within th
 | `update_descriptive_statistics.py` | Separates the master dataset into small and large samples based on median relative deal size. Then, calculates descriptive statistics for each group. |
 | `Master_Regression_Dataset.csv` | A copy of the final dataset for the regression |
 | `Target_Size_Descriptives.csv` | A table summarizing descriptive statistics of the deals, split by large or small target company.|
+| `winsorize.py` | Winsorizes the CAR variable at the 1% and 99% levels and re-runs the HC3 robust regression |
 
 ### Modified Event Window Regression [-20, +5]
 
