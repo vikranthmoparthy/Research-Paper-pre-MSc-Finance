@@ -86,6 +86,7 @@ To run the analysis, execute the Python scripts in the following order within th
 ### Main Regression
 1. Run `regression.py`, which give you the main event-window regression results.
 2. Run `update_descriptive_statistics.py` to generate the descriptive statistics table.
+2. Run `update_descriptive_statistics_explanatory_variables.py` to generate the descriptive statistics for the explanatory variables.
 
 ### Modified Event Window Regression [-20, +5]
 1. Run `CAR205_merge.py` to merge the [-20, +5] returns into the dataset.
@@ -98,8 +99,7 @@ To run the analysis, execute the Python scripts in the following order within th
 4. Run `regression3.py` to execute the Day -50 regression model.
 
 ### Visualisation [-5, +5] AAR Graph
-1. Run `abret55graph.py` to generate the plot of the [-5, +5] AAR returns.
-
+1. Run `abret55_small_large.py` to generate the plot of the [-5, +5] AAR returns.
 ---
 
 ## 3. File Descriptions
@@ -143,6 +143,7 @@ To run the analysis, execute the Python scripts in the following order within th
 | `acquiror_ticker_extractor.py` | Extracts and cleans acquirer tickers and announcement dates from the final master dataset. Renames columns and formats dates to YYYYMMDD for WRDS. |
 | `CAR205_merge.py` | Drops existing return variables from the master dataset and replaces them with CAR calculated over the [-20, +5] window|
 | `regression2.py` | Runs regression on the [-20, +5] window dataset. |
+| `Master_Regression_Dataset.csv` | A copy of the final dataset for the regression |
 | `CAR205.csv` | Dataset of stock returns calculated in window [-20, +5]|
 | `Master_Regression_Dataset_205.csv` | Version of the final dataset replacing the [-1, +1] returns with [-20, +5] returns |
 | `WRDS_Event_Study_Input_205.txt` | Text file to request WRDS for the [-20, +5] window returns. |
